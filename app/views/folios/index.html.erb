@@ -1,8 +1,11 @@
 <h1> Folio Items</h1>
 
+<a href="folios/new">"Create New"</a>
+<%= link_to "Create New Item!", new_folio_path %>
 <% @folio_items.each do |item| %>
   <p><%= item.title%></p>
   <p><%= item.subtitle%></p>
   <p><%= item.body%></p>
   <%= image_tag item.thumb_image if !item.thumb_image.nil?%>
+  <%= link_to "Edit", edit_folio_path(item.id) %>
 <% end %>
