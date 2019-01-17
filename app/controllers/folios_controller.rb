@@ -13,7 +13,7 @@ class FoliosController < ApplicationController
 
     respond_to do |format|
       if @folio_item.save
-        format.html { redirect_to @folios_path, notice: 'Blog was successfully created.' }
+        format.html { redirect_to folios_path, notice: 'Blog was successfully created.' }
       else
         format.html { render :new }
       end
@@ -28,7 +28,7 @@ class FoliosController < ApplicationController
 
     respond_to do |format|
       if @folio_item.update(params.require(:folio).permit(:title, :body))
-        format.html { redirect_to @folios_path, notice: 'Blog was successfully updated.' }
+        format.html { redirect_to folios_path, notice: 'Blog was successfully updated.' }
       else
         format.html { render :edit }
       end
@@ -37,6 +37,15 @@ class FoliosController < ApplicationController
 
   def show
     @folio_item = Folio.find(params[:id])
+  end
+
+  def destroy
+    @folio_item = Folio.find(params[:id])
+    @folio_item.destroy
+
+    respond_to do |format|
+      format.html { redirect_to folios_path, notice: 'Blog was successfully destroyed.' }
+    end
   end
 
 end
