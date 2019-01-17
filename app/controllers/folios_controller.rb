@@ -35,4 +35,8 @@ class FoliosController < ApplicationController
     end
   end
 
+  def show
+    @folio_item = Folio.find(params[:id])
+  end
+
 end
