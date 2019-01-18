@@ -3,7 +3,7 @@
 <a href="folios/new">"Create New"</a>
 <%= link_to "Create New Item!", new_folio_path %>
 <% @folio_items.each do |item| %>
-  <p><%= link_to item.title, folio_path(item)%></p>
+  <p><%= link_to item.title, folio_show_path(item)%></p>
   <p><%= item.subtitle%></p>
   <p><%= item.body%></p>
   <%= image_tag item.thumb_image if !item.thumb_image.nil?%>
