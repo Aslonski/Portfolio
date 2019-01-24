@@ -3,12 +3,17 @@ class FoliosController < ApplicationController
     @folio_items = Folio.all
   end
 
+  def angular
+    @angular_folio_items = Folio.angular
+  end
+
   def new
     @folio_item = Folio.new
+    3.times { @folio_item.technologies.build }
   end
 
   def create
-    @folio_item = Folio.new(params.require(:folio).permit(:title, :body))
+    @folio_item = Folio.new(params.require(:folio).permit(:title, :body, technologies_attributes: [:name]))
 
 
     respond_to do |format|
